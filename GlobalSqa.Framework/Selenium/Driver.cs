@@ -1,10 +1,10 @@
 ﻿using GlobalSqa.Framework.Enums;
+using GlobalSqa.Framework.Helpers;
 using OpenQA.Selenium;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using GlobalSqa.Framework.Helpers;
 
 namespace GlobalSqa.Framework.Selenium
 {
@@ -26,22 +26,22 @@ namespace GlobalSqa.Framework.Selenium
         {
             Current.Navigate().GoToUrl(url);
         }
-        public static IWebElement FindElement(By by)
+        public static Element FindElement(By by, string name ="")
         {
             try
             {
-                return Current.FindElement(by);
+                return new Element(Current.FindElement(by), name);
             }
             catch (NoSuchElementException)
             {
                 return null;
             }
         }
-        public static ReadOnlyCollection<IWebElement> FindElements(By by)
+        public static List<Element> FindElements(By by)
         {
             try
             {
-                return Current.FindElements(by);
+                return new List<Element>((IEnumerable<Element>)Current.FindElements(by));
             }
             catch (NoSuchElementException)
             {
