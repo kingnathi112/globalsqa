@@ -13,11 +13,22 @@ namespace GlobalSqa.Pages
             Map = new NavigatorMap();
         }
 
-        // Go HomeId
         public void GoHome()
         {
             if(Map.Home != null)
                 Map.Home.Click();
+        }
+
+        public void GoTesterHub()
+        {
+            if(Map.TesterHub != null)
+                Map.TesterHub.Click();
+        }
+
+        public void HoverTesterHub()
+        {
+            if (Map.TesterHub != null)
+                Map.TesterHub.Hover();
         }
     }
 
