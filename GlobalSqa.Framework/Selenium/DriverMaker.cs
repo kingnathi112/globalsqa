@@ -18,8 +18,8 @@ namespace GlobalSqa.Framework.Selenium
                     CopyWebdriversToLocal("chromedriver.exe");
                     var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArgument("--ignore-certificate-errors");
-                    chromeOptions.AddExcludedArgument("--enable-automation");
-                    chromeOptions.AddExcludedArgument("--load-extension");
+                   // chromeOptions.AddExcludedArgument("--enable-automation");
+                   // chromeOptions.AddExcludedArgument("--load-extension");
                     return new ChromeDriver(localPath,chromeOptions);
 
                 case "firefox":

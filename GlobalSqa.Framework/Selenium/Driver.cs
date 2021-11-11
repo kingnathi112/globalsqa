@@ -10,7 +10,11 @@ namespace GlobalSqa.Framework.Selenium
 {
     public static class Driver
     {
-        [ThreadStatic] private static IWebDriver _driver;
+        [ThreadStatic] 
+        private static IWebDriver _driver;
+
+        [ThreadStatic]
+        public static Wait Wait;
 
         /// <summary>
         /// Initializes driver by supplying browser name.
@@ -19,6 +23,7 @@ namespace GlobalSqa.Framework.Selenium
         public static void Init(Browsers browsers)
         {
             _driver = DriverMaker.Make(browsers.GetStringValue());
+            Wait = new Wait(60);
         }
 
         public static IWebDriver Current => _driver ?? throw new NullReferenceException($"{_driver.GetType().Name} is null.");
@@ -26,27 +31,27 @@ namespace GlobalSqa.Framework.Selenium
         {
             Current.Navigate().GoToUrl(url);
         }
-        public static Element FindElement(By by, string name ="")
+        public static Element FindElement(By by, string name = "")
         {
             try
             {
-                return new Element(Current.FindElement(by), name);
+                var element = Wait.Until(driver => driver.FindElement(by));
+                return new Element(element, name)
+                {
+                    FoundBy = by
+                };
             }
             catch (NoSuchElementException)
             {
                 return null;
             }
         }
-        public static List<Element> FindElements(By by)
+        public static Elements FindElements(By by)
         {
-            try
+            return new Elements(Current.FindElements(by))
             {
-                return new List<Element>((IEnumerable<Element>)Current.FindElements(by));
-            }
-            catch (NoSuchElementException)
-            {
-                return null;
-            }
+                FoundBy = by
+            };
         }
         public static void Maximize()
         {
