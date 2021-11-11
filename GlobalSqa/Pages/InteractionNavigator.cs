@@ -12,17 +12,31 @@ namespace GlobalSqa.Pages
             Map = new InteractionNavigatorMap();
         }
 
-        public void GoDragAndDrop()
+        #region Goto Methods
+
+        public void GoToDragAndDrop()
         {
             if(Map.DragAndDrop != null)
                 Map.DragAndDrop.Click();
         }
 
-        public void GoDropDownMenu()
+        public void GoToDropDownMenu()
         {
             if (Map.DropDownMenu != null)
                 Map.DropDownMenu.Click();
         }
+
+        #endregion
+
+        #region Visibility Methods
+
+        public bool IsDropDownMenuVisible()
+        {
+            if (Map.DropDownMenu != null) return Map.DropDownMenu.Displayed;
+            else return false;
+        }
+
+        #endregion
     }
 
     public class InteractionNavigatorMap
