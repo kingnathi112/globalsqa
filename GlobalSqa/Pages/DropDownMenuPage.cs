@@ -53,7 +53,7 @@ namespace GlobalSqa.Pages
 
     public class DropDownMenuPageMap
     {
-        public Element DropDownMenu => Driver.FindElement(By.CssSelector(DropDownMenuHooks.DropDownMenuCss));
-        public Element DropDown => Driver.FindElement(By.XPath(DropDownMenuHooks.DropDownXPath));
+        public Element DropDownMenu => Driver.FindElement(By.CssSelector(DropDownMenuHooks.DropDownMenuCss), "Drop Down Menu");
+        public Element DropDown => Driver.FindElement(By.XPath(DropDownMenuHooks.DropDownXPath), "Select Country");
     }
 }

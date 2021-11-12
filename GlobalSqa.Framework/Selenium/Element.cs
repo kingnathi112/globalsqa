@@ -36,6 +36,7 @@ namespace GlobalSqa.Framework.Selenium
 
         public void Click()
         {
+            GlobalSqaFW.Report.Step($"Click {Name}");
             Current.Click();
         }
         
@@ -71,17 +72,20 @@ namespace GlobalSqa.Framework.Selenium
 
         public void Hover()
         {
+            GlobalSqaFW.Report.Step($"Hover {Name}");
             var actions = new Actions(Driver.Current);
             actions.MoveToElement(Current).Perform();
         }
 
         public void SendKeys(string text)
         {
+            GlobalSqaFW.Report.Step($"Type {text} On {Name}");
             Current.SendKeys(text);
         }
 
         public void Submit()
         {
+            GlobalSqaFW.Report.Step($"Click {Name}");
             Current.Submit();
         }
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using GlobalSqa.Test.Base;
+﻿using GlobalSqa.Test.Base;
 using NUnit.Framework;
 
 namespace GlobalSqa.Test.Tests

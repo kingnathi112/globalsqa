@@ -41,7 +41,7 @@ namespace GlobalSqa.Pages
 
     public class InteractionNavigatorMap
     {
-        public Element DragAndDrop => Driver.FindElement(By.Id(InteractionHooks.DragAndDropId));
-        public Element DropDownMenu => Driver.FindElement(By.Id(InteractionHooks.DropDownMenuId));
+        public Element DragAndDrop => Driver.FindElement(By.Id(InteractionHooks.DragAndDropId), "Drag And Drop Link");
+        public Element DropDownMenu => Driver.FindElement(By.Id(InteractionHooks.DropDownMenuId), "Dropdown Menu Link");
     }
 }

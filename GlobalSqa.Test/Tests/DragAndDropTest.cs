@@ -17,7 +17,7 @@ namespace GlobalSqa.Test.Tests
         [Test, Order(20)]
         public void Given_UserNavigateToDragAndDrop_When_UserClickAndDragAnItemFromGallery_And_DropsItOnTrash_Then_ItemMustBeRemovedFromGallery()
         {
-            Console.WriteLine(dragAndDropPage.Items());
+           Assert.That(dragAndDropPage.IsGalleryVisible, Is.True);
         }
     }
 }

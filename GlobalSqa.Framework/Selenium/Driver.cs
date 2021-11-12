@@ -2,9 +2,9 @@
 using GlobalSqa.Framework.Helpers;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using OpenQA.Selenium.Support.Extensions;
 
 namespace GlobalSqa.Framework.Selenium
 {
@@ -12,6 +12,8 @@ namespace GlobalSqa.Framework.Selenium
     {
         [ThreadStatic] 
         private static IWebDriver _driver;
+
+        public static string wpd = Path.GetFullPath(@"../../../../");
 
         [ThreadStatic]
         public static Wait Wait;
@@ -65,11 +67,17 @@ namespace GlobalSqa.Framework.Selenium
         {
             Current.Manage().Window.Size = new Size(W, H);
         }
-        public static void TakeScreenshot(string name)
+
+        public static void Refresh()
+        {
+            Current.ExecuteJavaScript("return document.location.reload();");
+        }
+        public static string TakeScreenshot(string name)
         {
             var screenshot = ((ITakesScreenshot)Current).GetScreenshot();
-            var screenshotPath = Path.Combine("", name);
+            var screenshotPath = Path.Combine($"{wpd}", "TestResults", name, name);
             screenshot.SaveAsFile($"{screenshotPath}.png", ScreenshotImageFormat.Png);
+            return $"{screenshotPath}.png";
         }
         public static void Close()
         {

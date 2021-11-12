@@ -94,12 +94,12 @@ namespace GlobalSqa.Pages
     }
     public class DragAndDropPageMap
     {
-        public Element PhotoManagerHeader => Driver.FindElement(By.Id(DragAndDropHooks.PhotoManagerHeaderId));
-        public Element PhotoManager => Driver.FindElement(By.CssSelector(DragAndDropHooks.PhotoManagerCss));
-        public Element AcceptedElements => Driver.FindElement(By.Id(DragAndDropHooks.AcceptedElementsId));
-        public Element Propagation => Driver.FindElement(By.Id(DragAndDropHooks.PropagationId));
-        public Element Trash => Driver.FindElement(By.Id(DragAndDropHooks.TrashId));
-        public Element Gallery => Driver.FindElement(By.Id(DragAndDropHooks.GalleryId));
+        public Element PhotoManagerHeader => Driver.FindElement(By.Id(DragAndDropHooks.PhotoManagerHeaderId), "Photo Manager Header");
+        public Element PhotoManager => Driver.FindElement(By.CssSelector(DragAndDropHooks.PhotoManagerCss), "Photo Manager");
+        public Element AcceptedElements => Driver.FindElement(By.Id(DragAndDropHooks.AcceptedElementsId), "Accepted Elements Header");
+        public Element Propagation => Driver.FindElement(By.Id(DragAndDropHooks.PropagationId), "Propagation Header");
+        public Element Trash => Driver.FindElement(By.Id(DragAndDropHooks.TrashId), "Trash");
+        public Element Gallery => Driver.FindElement(By.Id(DragAndDropHooks.GalleryId), "Gallery");
         public Elements GalleryItems => Driver.FindElements(By.ClassName(DragAndDropHooks.GalleryItemClass));
     }
 }
